@@ -20,9 +20,14 @@ class LinkedList
     elsif @head.next_node == nil
       @nodes += 1
     else
-      until @head.next_node == nil do
+      another_node = @head.next_node
+      
+      until another_node == nil do
         @nodes += 1
+        another_node = another_node.next_node
       end
+
+      @nodes += 1
     end
   end
 

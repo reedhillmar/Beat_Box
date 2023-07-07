@@ -44,6 +44,13 @@ describe LinkedList do
 
       expect(list.count).to eq(1)
     end
+
+    it "can return more than 1" do
+      list.append("doop")
+      list.append("deep")
+
+      expect(list.count).to eq(2)
+    end
   end
 
   describe "#to_string" do
