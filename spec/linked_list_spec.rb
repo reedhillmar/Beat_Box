@@ -18,9 +18,19 @@ describe LinkedList do
   describe "#append" do
     it "can append to the list" do
       list.append("doop")
-
+    
       expect(list.head.data).to eq("doop")
       expect(list.head.next_node).to eq(nil)
+    end
+
+    it "can append a second node" do
+      list.append("doop")
+      list.append("deep")
+
+      #require 'pry';binding.pry
+
+      expect(list.head.data).to eq("doop")
+      expect(list.head.next_node.data).to eq("deep")
     end
   end
 

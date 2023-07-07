@@ -16,6 +16,12 @@ describe Node do
     it "has no next node as default" do
       expect(node.next_node).to eq(nil)
     end
+
+    it "can define the next node" do
+      node = Node.new("doop", Node.new("deep"))
+
+      expect(node.next_node.data).to eq("deep")
+    end
   end
 
   describe "#new_node" do
