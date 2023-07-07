@@ -23,4 +23,16 @@ describe LinkedList do
       expect(list.head.next_node).to eq(nil)
     end
   end
+
+  describe "#count" do
+    it "returns 0 if there is no head" do
+      expect(list.count).to eq(0)
+    end
+
+    it "returns 1 if there is no next node" do
+      list.append("doop")
+
+      expect(list.count).to eq(1)
+    end
+  end
 end
