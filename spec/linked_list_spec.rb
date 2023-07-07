@@ -35,4 +35,16 @@ describe LinkedList do
       expect(list.count).to eq(1)
     end
   end
+
+  describe "#to_string" do
+    it "will return nil if there is no head" do
+      expect(list.to_string).to eq(nil)
+    end
+
+    it "can return a string if there is a head" do
+      list.append("doop")
+
+      expect(list.to_string).to eq("doop")
+    end
+  end
 end

@@ -21,4 +21,12 @@ class LinkedList
       end
     end
   end
+
+  def to_string
+    if @head == nil
+      nil
+    else @head.next_node == nil
+      @head.data
+    end
+  end
 end
