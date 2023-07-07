@@ -5,4 +5,8 @@ class Node
     @data = data
     @next_node = next_node
   end
+
+  def new_node(new)
+    @next_node = new
+  end
 end
