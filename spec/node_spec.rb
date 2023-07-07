@@ -4,7 +4,7 @@ require "./lib/node"
 describe Node do
   let(:node) {Node.new("plop")}
   
-  describe "initialize" do
+  describe "#initialize" do
     it "can be a node" do
       expect(node).to be_a Node
     end
