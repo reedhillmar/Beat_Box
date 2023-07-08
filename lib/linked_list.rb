@@ -12,11 +12,19 @@ class LinkedList
     else
       # @head.next_node = (Node.new(data))
       # this needs to be an until for more than length 2 list
-      
+      current_node = @head
+
+      until current_node.next_node == nil do
+        current_node = current_node.next_node
+      end
+
+      current_node.next_node = (Node.new(data))
     end
   end
 
   def count
+  # I want to refactor this to conform with the rest of my code
+  # use current_node rather than another_node
     if @head == nil
       @nodes
     elsif @head.next_node == nil

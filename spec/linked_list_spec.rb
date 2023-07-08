@@ -32,6 +32,16 @@ describe LinkedList do
       expect(list.head.data).to eq("doop")
       expect(list.head.next_node.data).to eq("deep")
     end
+
+    it "can append a third node" do
+      list.append("doop")
+      list.append("deep")
+      list.append("do")
+
+      expect(list.head.data).to eq("doop")
+      expect(list.head.next_node.data).to eq("deep")
+      expect(list.head.next_node.next_node.data).to eq("do")
+    end
   end
 
   describe "#count" do
