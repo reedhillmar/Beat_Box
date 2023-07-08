@@ -1,10 +1,8 @@
 class LinkedList
-  attr_reader :head, :nodes, :string_array
+  attr_accessor :head, :append
 
   def initialize(head = nil)
     @head = head
-    @nodes = 0
-    @string_array = []
   end
 
   def append(data)
@@ -26,6 +24,8 @@ class LinkedList
   def count
   # I want to refactor this to conform with the rest of my code
   # use current_node rather than another_node
+    @nodes = 0  
+
     if @head == nil
       @nodes
     elsif @head.next_node == nil
@@ -79,6 +79,8 @@ class LinkedList
   end
 
   def insert(index, data)
+    @nodes = 0
+
     if index == 0
       prepend(data)
     else
