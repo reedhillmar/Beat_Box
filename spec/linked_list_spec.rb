@@ -110,4 +110,16 @@ describe LinkedList do
 
     end
   end
+
+  describe "#find" do
+    it "can return an array" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.find).to eq(["deep", "woo", "shi", "shu", "blop"])
+    end
+  end
 end

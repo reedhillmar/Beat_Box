@@ -10,7 +10,9 @@ class LinkedList
     if @head == nil
       @head = Node.new(data)
     else
-      @head.next_node = (Node.new(data))
+      # @head.next_node = (Node.new(data))
+      # this needs to be an until for more than length 2 list
+      
     end
   end
 
@@ -82,7 +84,24 @@ class LinkedList
       new_node = Node.new(data, current_node.next_node)
       current_node.next_node = new_node
 
-      
+      # this took me way too long
+      # I got down the wrong path and was trying to edit the list directly rather than creating a new node and fitting it into place
+      # I need to remember two things
+      # 1 - remember to add comments into my code! before diving in head first, make a plan and be sure that I fully understand what I'm tyring to accomplish
+      # this was great for me when I was building my to_string method and I didn't use it here to my detriment
+      # 2 - don't be afraid to reapproach it if something isn't working. try to reframe your perspective of the problem and see if there's another way to accomplish it
     end
+  end
+
+  def find
+    # takes two parameters, the first indicates the first position to return and the second parameter specifies how many elements to return
+    # if string = "deep woo shi shu blop"
+    # list.find(2, 1) == "shi"
+    # list.find(1, 3) == "woo shi shu"
+    # list.find(index, nodes_past_index)
+require 'pry';binding.pry
+    string = to_string
+    string.split
+
   end
 end
