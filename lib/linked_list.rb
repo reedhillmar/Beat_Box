@@ -116,21 +116,19 @@ class LinkedList
 
     if length == 0 || length == nil
       nil
-    else length == 1
+    elsif length == 1
       @string_array[index]
+    else
+      until beats >= length
+        index_to_add = index + beats
+        string = "#{string} #{@string_array[index_to_add]}"
+        beats += 1
+      end
+
+      string.strip
     end
-    # if length == 1
-    #   string = "#{@sting_array[index]}"
-    # else
-    #   until beats = length do
-    #   # each element will account for one beat, increasing the beat counter by one
-    #   # each element will be added to a string of beats until the number of beats in the string equals length
-    #   string = "#{string} #{@string_array[index + beats]}"
-    #   beats += 1
-    #   end
-    # end
 
-    # string.strip
-
+    # this went much better! I gave myself the time to think about what I was trying to do before just trying things
+    # I like the code here better than my other similar methods. If I have time I'd like to go back and refactor to account for all occurances within the loop rather than having to add another occurance after the loop closes
   end
 end
