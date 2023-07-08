@@ -131,4 +131,11 @@ class LinkedList
     # this went much better! I gave myself the time to think about what I was trying to do before just trying things
     # I like the code here better than my other similar methods. If I have time I'd like to go back and refactor to account for all occurances within the loop rather than having to add another occurance after the loop closes
   end
+
+  def includes?(element)
+    # gives back true or false whether the supplied value is in the list
+    @string_array = to_string.split
+
+    @string_array.include?(element)
+  end
 end
