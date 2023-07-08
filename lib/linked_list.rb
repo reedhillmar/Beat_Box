@@ -179,6 +179,9 @@ class LinkedList
 
     @string_array.pop
 
-    
+    # I feel really good about how I approched this!
+    # I initially only defined string array and popped it, but pretty quickly realized that that only pops the string, not the list. A LIST IS NOT AN ARRAY!!!
+    # From there I took another look and pseudo-coded how to pop the string_array and the list
+    # When I actually went in to write the code it was a one-and-done thanks to pre-planning
   end
 end
