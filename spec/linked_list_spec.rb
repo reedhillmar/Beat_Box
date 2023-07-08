@@ -63,5 +63,12 @@ describe LinkedList do
 
       expect(list.to_string).to eq("doop")
     end
+
+    it "can return a string of multiple nodes" do
+      list.append("doop")
+      list.append("deep")
+
+      expect(list.to_string).to eq("doop deep")
+    end
   end
 end
