@@ -1,17 +1,16 @@
 class LinkedList
-  attr_reader :head, :nodes, :bb
+  attr_reader :head, :nodes
 
   def initialize(head = nil)
     @head = head
     @nodes = 0
-    @bb = ""
   end
 
   def append(data)
     if @head == nil
       @head = Node.new(data)
     else
-      @head.new_node(Node.new(data))
+      @head.next_node = (Node.new(data))
     end
   end
 
@@ -51,17 +50,39 @@ class LinkedList
       # for each new node next_node.data needs to be added to a running string until next_node.data is nil
       current_node = @head
 
-
       until current_node.next_node == nil do
         # require 'pry';binding.pry
-        @bb = "#{current_node.data}"
+        string = "#{string} #{current_node.data}"
         
         current_node = current_node.next_node
       end
 
-      @bb = "#{@bb} #{current_node.data}"
-      @bb.strip
+      string = "#{string} #{current_node.data}"
+      string.strip
       # these two lines are not an elegant solution and should be fixed if I have time
+    end
+  end
+
+  def prepend(data)
+    @head = Node.new(data, @head)
+  end
+
+  def insert(index, data)
+    if index == 0
+      prepend(data)
+    else
+      current_node = @head
+      @nodes = 1
+
+      until @nodes == index || current_node.next_node == nil do
+        @nodes += 1
+        current_node = current_node.next_node
+      end
+
+      new_node = Node.new(data, current_node.next_node)
+      current_node.next_node = new_node
+
+      
     end
   end
 end
