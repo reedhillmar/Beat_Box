@@ -1,9 +1,10 @@
 class LinkedList
-  attr_reader :head, :nodes
+  attr_reader :head, :nodes, :string_array
 
   def initialize(head = nil)
     @head = head
     @nodes = 0
+    @string_array = []
   end
 
   def append(data)
@@ -101,15 +102,35 @@ class LinkedList
     end
   end
 
-  def find
+  def find(index, length)
     # takes two parameters, the first indicates the first position to return and the second parameter specifies how many elements to return
     # if string = "deep woo shi shu blop"
     # list.find(2, 1) == "shi"
     # list.find(1, 3) == "woo shi shu"
-    # list.find(index, nodes_past_index)
-require 'pry';binding.pry
-    string = to_string
-    string.split
+    # list.find(index, length)
+    # string = to_string
+    @string_array = to_string.split
+    beats = 0
+
+    @string_array[index]
+
+    if length == 0 || length == nil
+      nil
+    else length == 1
+      @string_array[index]
+    end
+    # if length == 1
+    #   string = "#{@sting_array[index]}"
+    # else
+    #   until beats = length do
+    #   # each element will account for one beat, increasing the beat counter by one
+    #   # each element will be added to a string of beats until the number of beats in the string equals length
+    #   string = "#{string} #{@string_array[index + beats]}"
+    #   beats += 1
+    #   end
+    # end
+
+    # string.strip
 
   end
 end

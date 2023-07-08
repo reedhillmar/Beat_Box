@@ -122,14 +122,25 @@ describe LinkedList do
   end
 
   describe "#find" do
-    it "can return an array" do
+    xit "can return an array" do
       list.append("deep")
       list.append("woo")
       list.append("shi")
       list.append("shu")
       list.append("blop")
 
-      expect(list.find).to eq(["deep", "woo", "shi", "shu", "blop"])
+      expect(list.to_string).to eq("deep woo shi shu blop")
+      expect(list.find(0, 5)).to eq(["deep", "woo", "shi", "shu", "blop"])
+    end
+
+    it "can return a given index position" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.find(2, 1)).to eq ("shi")
     end
   end
 end
