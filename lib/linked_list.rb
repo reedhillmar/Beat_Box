@@ -130,6 +130,9 @@ class LinkedList
 
     # this went much better! I gave myself the time to think about what I was trying to do before just trying things
     # I like the code here better than my other similar methods. If I have time I'd like to go back and refactor to account for all occurances within the loop rather than having to add another occurance after the loop closes
+
+    # this could also be done with .slice
+    # don't know if that's kosher  with array restictsion on the project
   end
 
   def includes?(element)
@@ -137,5 +140,45 @@ class LinkedList
     @string_array = to_string.split
 
     @string_array.include?(element)
+  end
+
+  def pop
+    # removes elements the last element from the list
+
+    # last call of the method is .pop
+    # before last call
+      # find the last node in the list
+        # current_head.next_node == nil
+      # store the element name of the last node for future use
+        # last_node = current_node
+      # find the previous node
+        # current_node = @head
+        # current_node.next_node == last node
+      # remove the link to the last node
+        # current_node.next_node = nil
+
+
+    # require 'pry';binding.pry
+    @string_array = to_string.split
+    current_node = @head
+
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+
+    last_node = current_node
+
+    current_node = @head
+
+    until current_node.next_node == last_node
+      current_node = current_node.next_node
+    end
+
+    current_node.next_node = nil
+
+
+    @string_array.pop
+
+    
   end
 end

@@ -145,14 +145,27 @@ describe LinkedList do
 
   describe "#includes?" do
     it "can answer if an element exists in a list" do
-    list.append("deep")
-    list.append("woo")
-    list.append("shi")
-    list.append("shu")
-    list.append("blop")
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
 
-    expect(list.includes?("deep")).to be true
-    expect(list.includes?("dep")).to be false
+      expect(list.includes?("deep")).to be true
+      expect(list.includes?("dep")).to be false
+    end
+  end
+  
+  describe "#pop" do
+    it "can remove the last element" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.pop).to eq("blop")
+      expect(list.pop).to eq("shu")
     end
   end
 end
