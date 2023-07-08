@@ -42,4 +42,19 @@ describe BeatBox do
       expect(bb.count).to eq(6)
     end
   end
+
+  describe "#play" do
+    #temporary test to confirm beats is accepting the string properly
+    # it "can accept a string to play" do
+    #   bb.append("deep doo ditt woo hoo shu")
+
+    #   expect(bb.play).to eq("deep doo ditt woo hoo shu")
+    # end
+
+    it "can play a sound" do
+      bb.append("deep doo ditt woo hoo shu")
+
+      bb.play
+    end
+  end
 end

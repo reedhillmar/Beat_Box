@@ -19,6 +19,9 @@ class BeatBox
 
   def play
     beats = list.to_string
-    require 'pry';binding.pry
+
+    `say -r 500 -v Boing #{beats}`
+
+    # beats <= this was here to confirm beats is accepting the string properly
   end
 end
