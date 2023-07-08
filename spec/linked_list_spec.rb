@@ -32,6 +32,16 @@ describe LinkedList do
       expect(list.head.data).to eq("doop")
       expect(list.head.next_node.data).to eq("deep")
     end
+
+    it "can append a third node" do
+      list.append("doop")
+      list.append("deep")
+      list.append("do")
+
+      expect(list.head.data).to eq("doop")
+      expect(list.head.next_node.data).to eq("deep")
+      expect(list.head.next_node.next_node.data).to eq("do")
+    end
   end
 
   describe "#count" do
@@ -69,6 +79,94 @@ describe LinkedList do
       list.append("deep")
 
       expect(list.to_string).to eq("doop deep")
+    end
+  end
+
+  describe "#prepend" do
+    it "can prepend a node to the beginning of a list" do
+      list.append("plop")
+
+      expect(list.to_string).to eq("plop")
+
+      list.append("suu")
+
+      expect(list.to_string).to eq("plop suu")
+
+      list.prepend("dop")
+
+      expect(list.to_string).to eq("dop plop suu")
+      expect(list.count).to eq 3
+    end
+  end
+
+  describe "#insert" do
+    it "can insert a node in the middle of a list"do
+      list.append("plop")
+
+      expect(list.to_string).to eq("plop")
+
+      list.append("suu")
+
+      expect(list.to_string).to eq("plop suu")
+
+      list.prepend("dop")
+
+      expect(list.to_string).to eq("dop plop suu")
+      expect(list.count).to eq 3
+
+      list.insert(1, "woo")
+
+      expect(list.to_string).to eq("dop woo plop suu")
+
+    end
+  end
+
+  describe "#find" do
+    it "can return a given index position" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.find(2, 1)).to eq ("shi")
+    end
+
+    it "can return a string starting at a given index and ending at a given length" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.find(1, 3)).to eq("woo shi shu")
+    end
+  end
+
+  describe "#includes?" do
+    it "can answer if an element exists in a list" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.includes?("deep")).to be true
+      expect(list.includes?("dep")).to be false
+    end
+  end
+  
+  describe "#pop" do
+    it "can remove the last element" do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.pop).to eq("blop")
+      expect(list.pop).to eq("shu")
+      expect(list.to_string).to eq("deep woo shi")
     end
   end
 end
