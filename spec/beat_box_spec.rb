@@ -57,4 +57,40 @@ describe BeatBox do
       bb.play
     end
   end
+
+  describe "#all" do
+    it "can return all nodes in a list as a string" do
+      bb.append("deep doo ditt")
+
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      
+      bb.append("woo hoo shu")
+
+      expect(bb.all).to eq("deep doo ditt woo hoo shu")
+    end
+  end
+
+  describe "#prepend" do
+    it "can prepend a string into a linked list" do
+      bb.append("deep doo ditt")
+      bb.prepend("woo")
+
+      expect(bb.list.head.data).to eq("woo")
+      expect(bb.list.head.next_node.data).to eq("deep")
+    end
+
+    xit "can prepend multiple elements into a linked list" do
+      bb.append("deep doo ditt")
+
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      
+      bb.prepend("woo hoo")
+  # require 'pry';binding.pry
+      expect(bb.list.head.data).to eq("woo")
+      expect(bb.list.head.next_node.data).to eq("hoo")
+      expect(bb.list.head.next_node.next_node.data).to eq("deep")
+    end
+  end
 end
