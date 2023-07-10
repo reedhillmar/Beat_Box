@@ -13,17 +13,20 @@ class LinkedList
       # this needs to be an until for more than length 2 list
       current_node = @head
 
-      until current_node.next_node == nil do
-        current_node = current_node.next_node
-      end
+      # until current_node.next_node == nil do
+      #   current_node = current_node.next_node
+      # end
+      current_node = current_node.next_node until current_node.next_node == nil
 
       current_node.next_node = (Node.new(data))
     end
   end
 
   def count
+  ##### DONE
   # I want to refactor this to conform with the rest of my code
   # use current_node rather than another_node
+  ##### DONE
 
   ### ORIGINAL
     # @nodes = 0  
@@ -48,7 +51,7 @@ class LinkedList
     @nodes = 0
     current_node = @head
 
-    until current_node == nil
+    until current_node == nil do
       current_node = current_node.next_node
       @nodes += 1
     end
@@ -58,11 +61,13 @@ class LinkedList
   end
 
   def to_string
-    if @head == nil
-      nil
-    # elsif @head.next_node == nil
-    #   @head.data
-    else
+  
+  ### ORIGINAL
+    # if @head == nil
+    #   nil
+    # # elsif @head.next_node == nil
+    # #   @head.data
+    # else
       # list.append("doop")
       # list.append("deep")
       # list.append("dip")
@@ -72,19 +77,38 @@ class LinkedList
       # if current_node == @head && current_node.next_node.data == nil
       # then another node.data should be the end of the string
       # for each new node next_node.data needs to be added to a running string until next_node.data is nil
-      current_node = @head
+    #   current_node = @head
 
-      until current_node.next_node == nil do
-        # require 'pry';binding.pry
-        string = "#{string} #{current_node.data}"
+    #   until current_node.next_node == nil do
+    #     # require 'pry';binding.pry
+    #     string = "#{string} #{current_node.data}"
+        
+    #     current_node = current_node.next_node
+    #   end
+
+    #   string = "#{string} #{current_node.data}"
+    #   string.strip
+    #   # these two lines are not an elegant solution and should be fixed if I have time
+    # end
+
+    if @head == nil
+    else
+      current_node = @head
+      @string = ""
+      
+      loop do
+        @string = "#{@string} #{current_node.data}" 
+
+        break if current_node.next_node == nil
         
         current_node = current_node.next_node
       end
-
-      string = "#{string} #{current_node.data}"
-      string.strip
-      # these two lines are not an elegant solution and should be fixed if I have time
     end
+
+    # if @string == nil
+    # else @string.strip
+    # end
+    @string.strip unless @string == nil
   end
 
   def prepend(data)
@@ -118,12 +142,15 @@ class LinkedList
   end
 
   def find(index, length)
+  ### ORIGINAL
     # takes two parameters, the first indicates the first position to return and the second parameter specifies how many elements to return
     # if string = "deep woo shi shu blop"
     # list.find(2, 1) == "shi"
     # list.find(1, 3) == "woo shi shu"
     # list.find(index, length)
     # string = to_string
+
+    ##CODE
     @string_array = to_string.split
     beats = 0
 
@@ -148,6 +175,23 @@ class LinkedList
 
     # this could also be done with .slice
     # don't know if that's kosher  with array restictsion on the project
+
+  ### REFACTOR WITHOUT ARRAY
+  ## takes two parameters, the first indicates the first position to return and the second parameter specifies how many elements to return
+  ## find the position
+    ## find the first space
+      ## space = to_string.index(" ")
+    ## node = to_string[0..space]
+  ## return number of words
+    ## length = 1, return 1 word
+    ## length = 2, return 2 words
+
+    ## CODE
+    # if length == 0 || length == nil
+    #   nil
+    # elsif length == 1
+    #   to_string[0..to_string.index(" ") - 1]
+    # end
   end
 
   def includes?(element)
@@ -169,9 +213,10 @@ class LinkedList
       # if current_node.next_node == element => true
       # if current_node.next_node == nil => false
 
-    until current_node.data == element || current_node.next_node == nil
-      current_node = current_node.next_node
-    end
+    # until current_node.data == element || current_node.next_node == nil
+    #   current_node = current_node.next_node
+    # end
+    current_node = current_node.next_node until current_node.data == element || current_node.next_node == nil
 
     current_node.data == element
   end
@@ -191,31 +236,33 @@ class LinkedList
       # remove the link to the last node
         # current_node.next_node = nil
 
-
-    # require 'pry';binding.pry
-    @string_array = to_string.split
     current_node = @head
 
-    until current_node.next_node == nil
-      current_node = current_node.next_node
-    end
+    # until current_node.next_node == nil
+    #   current_node = current_node.next_node
+    # end
+    current_node = current_node.next_node until current_node.next_node == nil
 
     last_node = current_node
 
     current_node = @head
 
-    until current_node.next_node == last_node
-      current_node = current_node.next_node
-    end
+    # until current_node.next_node == last_node
+    #   current_node = current_node.next_node
+    # end
+    current_node = current_node.next_node until current_node.next_node == last_node
 
     current_node.next_node = nil
 
-
-    @string_array.pop
-
+    last_node.data
     # I feel really good about how I approched this!
     # I initially only defined string array and popped it, but pretty quickly realized that that only pops the string, not the list. A LIST IS NOT AN ARRAY!!!
     # From there I took another look and pseudo-coded how to pop the string_array and the list
     # When I actually went in to write the code it was a one-and-done thanks to pre-planning
+    
+    ## Refactoring
+    ## In refactoring I realized I don't need to use an array at all
+    ## I previously used @string_array = list.to_string => @string_array.pop
+    ## That just called the same data I already had stored in last_node
   end
 end

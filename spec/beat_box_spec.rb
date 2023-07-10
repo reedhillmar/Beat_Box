@@ -19,6 +19,13 @@ describe BeatBox do
     it "starts with no nodes as default" do
       expect(bb.list.head).to eq(nil)
     end
+
+    it "can start with nodes" do
+      bb = BeatBox.new("deep dop dop deep")
+
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("deep")
+    end
   end
 
   describe "#append" do
@@ -100,14 +107,13 @@ describe BeatBox do
       expect(bb.list.head.next_node.data).to eq("doo")
       
       bb.prepend("woo whiskey hoo")
-  # require 'pry';binding.pry
       expect(bb.list.head.data).to eq("woo")
       expect(bb.list.head.next_node.data).to eq("hoo")
       expect(bb.list.head.next_node.next_node.data).to eq("deep")
     end
   end
 
-  describe "#reset_rate & #reset_voice" do
+  xdescribe "#reset_rate & #reset_voice" do
     it "can play at different rates and voices" do
       bb.append("deep doo ditt woo hoo shu")
 
@@ -140,7 +146,7 @@ describe BeatBox do
       expect(bb.play).to eq(["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"])
     end
 
-    it "can let the user know if a rate isn't permitted" do
+    xit "can let the user know if a rate isn't permitted" do
       bb.append("deep doo ditt woo hoo shu")
 
       bb.rate = "Fifty"

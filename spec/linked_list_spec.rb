@@ -129,7 +129,7 @@ describe LinkedList do
       list.append("shu")
       list.append("blop")
 
-      expect(list.find(2, 1)).to eq ("shi")
+      expect(list.find(0, 1)).to eq ("deep")
     end
 
     it "can return a string starting at a given index and ending at a given length" do

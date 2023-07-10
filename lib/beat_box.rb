@@ -2,12 +2,13 @@ class BeatBox
   attr_reader :list, :string, :allowed_beats
   attr_accessor :voice, :rate
 
-  def initialize
+  def initialize(beats = "")
     @list = LinkedList.new
     @allowed_beats = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu"]
     @allowed_voices = ["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"]
     @voice = "Boing"
     @rate = 500
+    @beats = append(beats)
   end
 
   def append(string)
@@ -20,7 +21,7 @@ class BeatBox
       if @allowed_beats.include?(element)
         list.append(element)
       else
-        elements.delete(element)
+        elements.delete_at(elements.find_index(element))
       end
     end
   end
@@ -45,7 +46,7 @@ class BeatBox
     elsif @allowed_voices.include?(@voice)
       `say -r #{@rate} -v #{@voice} #{all}`
     else
-      p "Please choose a valid voice from the slection below"
+      p "Please choose a valid voice from the selection below"
       p @allowed_voices
     end
 
