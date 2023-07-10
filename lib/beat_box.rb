@@ -2,9 +2,8 @@ class BeatBox
   attr_reader :list, :string, :allowed_beats
   attr_accessor :voice, :rate
 
-  def initialize(string = "")
+  def initialize
     @list = LinkedList.new
-    @string = string
     @allowed_beats = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu"]
     @allowed_voices = ["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"]
     @voice = "Boing"

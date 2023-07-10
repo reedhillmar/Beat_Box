@@ -139,9 +139,28 @@ class LinkedList
 
   def includes?(element)
     # gives back true or false whether the supplied value is in the list
-    @string_array = to_string.split
 
-    @string_array.include?(element)
+    ### Original Solution
+    # @string_array = to_string.split
+
+    # @string_array.include?(element)
+
+    ### Original Refactor
+    # to_string.split.include?(element)
+
+    ### refactoring above to break down what's happening under the hood
+    current_node = @head
+
+    # GOAL
+      # cycle through current_node.next_node until == element || nil
+      # if current_node.next_node == element => true
+      # if current_node.next_node == nil => false
+
+    until current_node.data == element || current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+
+    current_node.data == element
   end
 
   def pop

@@ -152,6 +152,8 @@ describe LinkedList do
       list.append("blop")
 
       expect(list.includes?("deep")).to be true
+      expect(list.includes?("shi")).to be true
+      expect(list.includes?("blop")).to be true
       expect(list.includes?("dep")).to be false
     end
   end
