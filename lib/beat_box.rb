@@ -38,4 +38,17 @@ class BeatBox
     # return all nodes in a list as a string
     list.to_string
   end
+
+  def prepend(string)
+    reverse_elements = string.split.reverse
+
+    reverse_elements.delete_if {|element| @allowed.include?(element) == false}
+
+    reverse_elements.each do |element|
+        list.prepend(element)
+    end
+
+    # I tried to remove elements as part of the each block and it didn't work. Not sure why
+    # Come back and test this again later
+  end
 end

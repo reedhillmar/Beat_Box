@@ -80,13 +80,26 @@ describe BeatBox do
       expect(bb.list.head.next_node.data).to eq("deep")
     end
 
-    xit "can prepend multiple elements into a linked list" do
+    it "can prepend multiple elements into a linked list" do
       bb.append("deep doo ditt")
 
       expect(bb.list.head.data).to eq("deep")
       expect(bb.list.head.next_node.data).to eq("doo")
       
       bb.prepend("woo hoo")
+  # require 'pry';binding.pry
+      expect(bb.list.head.data).to eq("woo")
+      expect(bb.list.head.next_node.data).to eq("hoo")
+      expect(bb.list.head.next_node.next_node.data).to eq("deep")
+    end
+
+    it "can prepend multiple elements while removing ones that aren't allowed" do
+      bb.append("deep doo ditt")
+
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      
+      bb.prepend("woo whiskey hoo")
   # require 'pry';binding.pry
       expect(bb.list.head.data).to eq("woo")
       expect(bb.list.head.next_node.data).to eq("hoo")
