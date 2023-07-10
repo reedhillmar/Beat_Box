@@ -24,24 +24,37 @@ class LinkedList
   def count
   # I want to refactor this to conform with the rest of my code
   # use current_node rather than another_node
-    @nodes = 0  
 
-    if @head == nil
-      @nodes
-    elsif @head.next_node == nil
-      @nodes += 1
-    else
-      another_node = @head.next_node
+  ### ORIGINAL
+    # @nodes = 0  
+
+    # if @head == nil
+    #   @nodes
+    # elsif @head.next_node == nil
+    #   @nodes += 1
+    # else
+    #   another_node = @head.next_node
       
-      until another_node == nil do
-        @nodes += 1 
-        another_node = another_node.next_node
-      end
+    #   until another_node == nil do
+    #     @nodes += 1 
+    #     another_node = another_node.next_node
+    #   end
 
-      @nodes += 1
+    #   @nodes += 1
       # this needs to be here because the final node is not taken into account in the until loop
       # this is not an elegant solution and should be fixed if I have time
+
+  ### REFACTOR
+    @nodes = 0
+    current_node = @head
+
+    until current_node == nil
+      current_node = current_node.next_node
+      @nodes += 1
     end
+
+    @nodes
+
   end
 
   def to_string
