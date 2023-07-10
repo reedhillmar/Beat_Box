@@ -106,4 +106,47 @@ describe BeatBox do
       expect(bb.list.head.next_node.next_node.data).to eq("deep")
     end
   end
+
+  describe "#reset_rate & #reset_voice" do
+    it "can play at different rates and voices" do
+      bb.append("deep doo ditt woo hoo shu")
+
+      bb.rate = 100
+      bb.voice = "Daniel"
+
+      bb.play
+    end
+
+    it "can reset rate and voice to default values" do
+      bb.append("deep doo ditt woo hoo shu")
+
+      bb.rate = 100
+      bb.voice = "Daniel"
+
+      bb.play
+
+      bb.reset_rate
+      bb.reset_voice
+
+      bb.play
+    end
+
+    it "can let the user know if a voice isn't permitted" do
+      bb.append("deep doo ditt woo hoo shu")
+
+      bb.rate = 100
+      bb.voice = "Balthazar"
+
+      expect(bb.play).to eq(["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"])
+    end
+
+    it "can let the user know if a rate isn't permitted" do
+      bb.append("deep doo ditt woo hoo shu")
+
+      bb.rate = "Fifty"
+      bb.voice = "Reed"
+# require 'pry';binding.pry
+      expect(bb.play).to eq("Please choose a valid rate. Rate must be an integer or float.")
+    end
+  end
 end

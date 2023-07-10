@@ -1,10 +1,14 @@
 class BeatBox
-  attr_reader :list, :string, :allowed
+  attr_reader :list, :string, :allowed_beats
+  attr_accessor :voice, :rate
 
   def initialize(string = "")
     @list = LinkedList.new
     @string = string
-    @allowed = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu"]
+    @allowed_beats = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu"]
+    @allowed_voices = ["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"]
+    @voice = "Boing"
+    @rate = 500
   end
 
   def append(string)
@@ -14,7 +18,7 @@ class BeatBox
     elements = string.split
 
     elements.each do |element|
-      if @allowed.include?(element)
+      if @allowed_beats.include?(element)
         list.append(element)
       else
         elements.delete(element)
@@ -28,8 +32,23 @@ class BeatBox
 
   def play
     #beats = list.to_string <= this line is no longer needed since adding #all
+    # if @allowed_voices.include?(@voice)
+    #   `say -r #{@rate} -v #{@voice} #{all}`
+    # else
+    #   p "Please choose a valid voice from the slection below"
+    #   p @allowed_voices
+    # end
 
-    `say -r 500 -v Boing #{all}`
+    if @rate.to_s == @rate
+      p "Please choose a valid rate. Rate must be an integer or float."
+    # elsif # If @rate is an array...
+    #   "Please choose a valid rate. Rate must be an integer or float."
+    elsif @allowed_voices.include?(@voice)
+      `say -r #{@rate} -v #{@voice} #{all}`
+    else
+      p "Please choose a valid voice from the slection below"
+      p @allowed_voices
+    end
 
     # beats <= this was here to confirm beats is accepting the string properly
   end
@@ -42,7 +61,7 @@ class BeatBox
   def prepend(string)
     reverse_elements = string.split.reverse
 
-    reverse_elements.delete_if {|element| @allowed.include?(element) == false}
+    reverse_elements.delete_if {|element| @allowed_beats.include?(element) == false}
 
     reverse_elements.each do |element|
         list.prepend(element)
@@ -50,5 +69,13 @@ class BeatBox
 
     # I tried to remove elements as part of the each block and it didn't work. Not sure why
     # Come back and test this again later
+  end
+
+  def reset_rate
+    @rate = 500
+  end
+
+  def reset_voice
+    @voice = "Boing"
   end
 end
