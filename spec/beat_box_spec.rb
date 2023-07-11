@@ -21,10 +21,10 @@ describe BeatBox do
     end
 
     it "can start with nodes" do
-      bb = BeatBox.new("deep dop dop deep")
-
+      bb = BeatBox.new("deep doo dop doo deep")
       expect(bb.list.head.data).to eq("deep")
-      expect(bb.list.head.next_node.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      expect(bb.list.head.next_node.next_node.data).to eq("doo")
     end
   end
 
@@ -47,6 +47,14 @@ describe BeatBox do
       expect(bb.list.count).to eq(6)
       # require 'pry';binding.pry
       expect(bb.count).to eq(6)
+    end
+
+    it "can append a string and remove invalid beats" do 
+      bb.append("deep doo dop doo deep")
+
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      expect(bb.list.head.next_node.next_node.data).to eq("doo")
     end
   end
 
@@ -143,16 +151,16 @@ describe BeatBox do
       bb.rate = 100
       bb.voice = "Balthazar"
 
-      expect(bb.play).to eq(["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"])
+      expect(bb.play_test).to eq("Your voice is invalid.")
     end
 
-    xit "can let the user know if a rate isn't permitted" do
+    it "can let the user know if a rate isn't permitted" do
       bb.append("deep doo ditt woo hoo shu")
 
       bb.rate = "Fifty"
       bb.voice = "Reed"
 # require 'pry';binding.pry
-      expect(bb.play).to eq("Please choose a valid rate. Rate must be an integer or float.")
+      expect(bb.play_test).to eq("Your rate is invalid.")
     end
   end
 end

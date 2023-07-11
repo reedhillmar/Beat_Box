@@ -201,7 +201,7 @@ class LinkedList
 
       index_string = helper_string
 
-      until words ==  length
+      until words == length
         words += 1
         helper_string = helper_string.sub(" ", "")
       end
