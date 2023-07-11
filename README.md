@@ -19,7 +19,11 @@ However to add some additional depth, let’s also use this project as a chance 
 ## Evaluation
 [Rubric](https://backend.turing.edu/module1/projects/beat_box/rubric)
 
+## Comments
+For commented code reference comments branch of the github repository.
+
 # Beat Box Runner
 The beat box runner allows a user to interact with my code. To run the file, type `ruby beat_box_runner.rb` into your terminal from the beat_box directory.
 
 Please note that the allowed voices function may not work as intended depending on which voices are available on the user's device.
+
