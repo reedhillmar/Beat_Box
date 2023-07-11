@@ -151,24 +151,20 @@ class LinkedList
     # string = to_string
 
     ##CODE
-    @string_array = to_string.split
-    beats = 0
+    # if length == 0 || length == nil
+    #   nil
+    # elsif length == 1
+    #   to_string.split[index]
+    # else
+    #   beats = 0
+    #   until beats >= length
+    #     index_to_add = index + beats
+    #     string = "#{string} #{to_string.split[index_to_add]}"
+    #     beats += 1
+    #   end
 
-    @string_array[index]
-
-    if length == 0 || length == nil
-      nil
-    elsif length == 1
-      @string_array[index]
-    else
-      until beats >= length
-        index_to_add = index + beats
-        string = "#{string} #{@string_array[index_to_add]}"
-        beats += 1
-      end
-
-      string.strip
-    end
+    #   string.strip
+    # end
 
     # this went much better! I gave myself the time to think about what I was trying to do before just trying things
     # I like the code here better than my other similar methods. If I have time I'd like to go back and refactor to account for all occurances within the loop rather than having to add another occurance after the loop closes
@@ -187,11 +183,38 @@ class LinkedList
     ## length = 2, return 2 words
 
     ## CODE
-    # if length == 0 || length == nil
-    #   nil
-    # elsif length == 1
-    #   to_string[0..to_string.index(" ") - 1]
-    # end
+    if length == 0 || length == nil
+      nil
+    elsif length == 1
+      to_string[0..to_string.index(" ") - 1]
+    else
+      spaces = 1
+      words = 0
+      helper_string = to_string
+        
+      until spaces == index
+        spaces += 1
+        helper_string = helper_string.sub(" ", "")
+      end
+
+      # require 'pry';binding.pry
+
+      index_string = helper_string
+
+      until words ==  length
+        words += 1
+        helper_string = helper_string.sub(" ", "")
+      end
+
+      # require 'pry';binding.pry
+
+      length_string = helper_string
+
+      index_string[(index_string.index(" ") + 1)..(length_string.index(" ") - 1 + words)]
+    end
+
+    ### Holy shit this is such a dumb way to do this but I'm glad that it works. I have a newfound love for arrays.
+
   end
 
   def includes?(element)
