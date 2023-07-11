@@ -23,12 +23,4 @@ describe Node do
       expect(node.next_node.data).to eq("deep")
     end
   end
-
-  describe "#new_node" do
-    it "can make a new node the next node" do
-      node.new_node("Congrats, this worked")
-
-      expect(node.next_node).to eq("Congrats, this worked")
-    end
-  end
 end

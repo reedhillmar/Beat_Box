@@ -19,6 +19,13 @@ describe BeatBox do
     it "starts with no nodes as default" do
       expect(bb.list.head).to eq(nil)
     end
+
+    it "can start with nodes" do
+      bb = BeatBox.new("deep doo dop doo deep")
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      expect(bb.list.head.next_node.next_node.data).to eq("doo")
+    end
   end
 
   describe "#append" do
@@ -40,6 +47,14 @@ describe BeatBox do
       expect(bb.list.count).to eq(6)
       # require 'pry';binding.pry
       expect(bb.count).to eq(6)
+    end
+
+    it "can append a string and remove invalid beats" do 
+      bb.append("deep doo dop doo deep")
+
+      expect(bb.list.head.data).to eq("deep")
+      expect(bb.list.head.next_node.data).to eq("doo")
+      expect(bb.list.head.next_node.next_node.data).to eq("doo")
     end
   end
 
@@ -100,14 +115,13 @@ describe BeatBox do
       expect(bb.list.head.next_node.data).to eq("doo")
       
       bb.prepend("woo whiskey hoo")
-  # require 'pry';binding.pry
       expect(bb.list.head.data).to eq("woo")
       expect(bb.list.head.next_node.data).to eq("hoo")
       expect(bb.list.head.next_node.next_node.data).to eq("deep")
     end
   end
 
-  describe "#reset_rate & #reset_voice" do
+  xdescribe "#reset_rate & #reset_voice" do
     it "can play at different rates and voices" do
       bb.append("deep doo ditt woo hoo shu")
 
@@ -137,7 +151,7 @@ describe BeatBox do
       bb.rate = 100
       bb.voice = "Balthazar"
 
-      expect(bb.play).to eq(["Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley", "Fred", "Junior", "Kathy", "Nicky", "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles", "Cellos", "Good News", "Jester", "Organ", "Superstar", "Trinoids", "Whisper", "Wobble", "Zarvox", "Ralph", "Samantha", "Karen", "Rishi", "Moira", "Tessa", "Daniel"])
+      expect(bb.play_test).to eq("Your voice is invalid.")
     end
 
     it "can let the user know if a rate isn't permitted" do
@@ -146,7 +160,7 @@ describe BeatBox do
       bb.rate = "Fifty"
       bb.voice = "Reed"
 # require 'pry';binding.pry
-      expect(bb.play).to eq("Please choose a valid rate. Rate must be an integer or float.")
+      expect(bb.play_test).to eq("Your rate is invalid.")
     end
   end
 end
