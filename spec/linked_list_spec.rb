@@ -27,8 +27,6 @@ describe LinkedList do
       list.append("doop")
       list.append("deep")
 
-      #require 'pry';binding.pry
-
       expect(list.head.data).to eq("doop")
       expect(list.head.next_node.data).to eq("deep")
     end

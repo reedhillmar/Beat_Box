@@ -43,9 +43,8 @@ describe BeatBox do
       expect(bb.list.head.next_node.data).to eq("doo")
       
       bb.append("woo hoo shu")
-# require 'pry';binding.pry
+
       expect(bb.list.count).to eq(6)
-      # require 'pry';binding.pry
       expect(bb.count).to eq(6)
     end
 
@@ -59,13 +58,6 @@ describe BeatBox do
   end
 
   describe "#play" do
-    #temporary test to confirm beats is accepting the string properly
-    # it "can accept a string to play" do
-    #   bb.append("deep doo ditt woo hoo shu")
-
-    #   expect(bb.play).to eq("deep doo ditt woo hoo shu")
-    # end
-
     it "can play a sound" do
       bb.append("deep doo ditt woo hoo shu")
 
@@ -102,7 +94,7 @@ describe BeatBox do
       expect(bb.list.head.next_node.data).to eq("doo")
       
       bb.prepend("woo hoo")
-  # require 'pry';binding.pry
+
       expect(bb.list.head.data).to eq("woo")
       expect(bb.list.head.next_node.data).to eq("hoo")
       expect(bb.list.head.next_node.next_node.data).to eq("deep")
@@ -159,7 +151,6 @@ describe BeatBox do
 
       bb.rate = "Fifty"
       bb.voice = "Reed"
-# require 'pry';binding.pry
       expect(bb.play_test).to eq("Your rate is invalid.")
     end
   end

@@ -12,9 +12,6 @@ class BeatBox
   end
 
   def append(string)
-    # if elements of string are not in allowed, remove them from the string
-      # for each element in the given string, check that it is included in allowed
-      # if flase, remove the element before appending
     elements = string.split
 
     # elements.each do |element|
@@ -38,14 +35,6 @@ class BeatBox
   end
 
   def play_test
-    #beats = list.to_string <= this line is no longer needed since adding #all
-    # if @allowed_voices.include?(@voice)
-    #   `say -r #{@rate} -v #{@voice} #{all}`
-    # else
-    #   p "Please choose a valid voice from the slection below"
-    #   p @allowed_voices
-    # end
-
     if @rate.to_s == @rate
       p "Your rate is invalid."
     # elsif # If @rate is an array...
@@ -54,8 +43,6 @@ class BeatBox
       p "Your voice is invalid."
     else
     end
-
-    # beats <= this was here to confirm beats is accepting the string properly
   end
 
   def play
@@ -63,7 +50,6 @@ class BeatBox
   end
 
   def all
-    # return all nodes in a list as a string
     list.to_string
   end
 
@@ -75,9 +61,6 @@ class BeatBox
     reverse_elements.each do |element|
         list.prepend(element)
     end
-
-    # I tried to remove elements as part of the each block and it didn't work. Not sure why
-    # Come back and test this again later
   end
 
   def reset_rate
